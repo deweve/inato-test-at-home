@@ -34,7 +34,7 @@ export const trialCommandBuild = (client: GraphQLClient) =>
       if (!country) {
         throw new Error("Country not found, use one in the list");
       }
-      const trials = (await sdk.trials({ countryCode: country.code })).data
+      const trials = (await sdk.GetTrials({ countryCode: country.code })).data
         .trials;
       for (const trial of trials) {
         console.log(`${trial.name}, ${getCountryName(trial.country)}`);

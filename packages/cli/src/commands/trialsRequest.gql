@@ -1,4 +1,4 @@
-query trials($countryCode: String!) {
+query GetTrials($countryCode: String!) {
   trials(filter: { countryCode: $countryCode }) {
     name
     country
