@@ -1,12 +1,10 @@
 import { program } from "commander";
+import { GraphQLClient } from "graphql-request";
+import { trialCommandBuild } from "./commands/trials";
+
+const client = new GraphQLClient("http://localhost:8080/graphql");
 
 program
   .name("inato-cli")
-  .command("trials")
-  .description("get the list of clinical trials")
-  .requiredOption("-p, --path <type>", "the api path to call")
-  .action(async function ({ path }) {
-    const response = await fetch(`http://localhost:8080/${path}`);
-    console.log(await response.text());
-  })
+  .addCommand(trialCommandBuild(client))
   .parseAsync(process.argv);
