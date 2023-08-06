@@ -1,13 +1,20 @@
-import express, { Express, Response } from "express";
-require("./TrialService/trialService");
+import "reflect-metadata";
+import { buildSchema } from "type-graphql";
+import { TrialResolver } from "./Trials/Resolver";
+import { ApolloServer } from "@apollo/server";
+import { startStandaloneServer } from "@apollo/server/standalone";
 
-const app: Express = express();
 const port = 8080;
+async function bootstrap() {
+  const schema = await buildSchema({
+    resolvers: [TrialResolver],
+  });
 
-app.get("/ping", (_req, res: Response) => {
-  res.send("pong");
-});
+  // Create GraphQL server
+  const server = new ApolloServer({ schema });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+  const { url } = await startStandaloneServer(server, { listen: { port } });
+  console.log(`Server is running, GraphQL Playground available at ${url}`);
+}
+
+bootstrap();
