@@ -1,0 +1,6 @@
+query trials($countryCode: String!) {
+  trials(filter: { countryCode: $countryCode }) {
+    name
+    country
+  }
+}
