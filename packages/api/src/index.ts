@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { buildSchema } from "type-graphql";
-import { TrialResolver } from "./Trials/Resolver";
+import { TrialResolver } from "./modules/Trials/Resolver";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
