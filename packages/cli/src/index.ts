@@ -1,6 +1,6 @@
 import { Option, Command } from "commander";
 import { GraphQLClient } from "graphql-request";
-import { trialsCommand } from "./commands/trials";
+import { trialsCommand } from "./commands/Trials";
 import { Sdk, getSdk } from "./generates/sdk";
 
 const option = new Option("--url <url>", "Inato api url").default(

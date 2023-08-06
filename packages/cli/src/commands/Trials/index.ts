@@ -1,6 +1,6 @@
 import { Command, Option } from "commander";
 import countries from "./countries.json";
-import { getSdkConfigured } from "..";
+import { getSdkConfigured } from "../..";
 
 const countryOption = new Option(
   "-c, --country <country>",
