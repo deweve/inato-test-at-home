@@ -39,10 +39,31 @@ function filterBySponsor(sponsor: string): Predicate<Trial> {
   };
 }
 
-export function findActiveTrialsByCountry(countryCode: string): Trial[] {
-  return trials.filter(isOngoingTrial).filter(isInCountry(countryCode));
+interface TrialsFilter {
+  sponsor: string;
+  countryCode: string;
 }
 
-export function findActiveTrialsBySponsor(sponsor: string): Trial[] {
-  return trials.filter(isOngoingTrial).filter(filterBySponsor(sponsor));
+type PredicateBuilder<T> = {
+  [K in keyof T]: (value: T[K]) => Predicate<Trial>;
+};
+
+const predicateTrial: PredicateBuilder<TrialsFilter> = {
+  sponsor: filterBySponsor,
+  countryCode: isInCountry,
+};
+
+function buildPredicateFilter(filter: Partial<TrialsFilter>): Predicate<Trial> {
+  const predicates: Predicate<Trial>[] = Object.entries(filter).map(
+    ([key, predicateBuilder]) => {
+      return predicateTrial[key](predicateBuilder);
+    }
+  );
+  return (trial) => predicates.every((predicate) => predicate(trial));
+}
+
+export function getActiveTrials(filter: Partial<TrialsFilter>): Trial[] {
+  const filterFunction = buildPredicateFilter(filter);
+  const activeTrials = trials.filter(isOngoingTrial);
+  return activeTrials.filter(filterFunction);
 }
