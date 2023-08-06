@@ -1,7 +1,6 @@
 import { Command, Option } from "commander";
 import countries from "./countries.json";
-import { GraphQLClient } from "graphql-request";
-import { getSdk } from "../generates/sdk";
+import { getSdkConfigured } from "..";
 
 const countryOption = new Option(
   "-c, --country <country>",
@@ -22,21 +21,27 @@ function getCountryName(countryCode: string): string {
   return indexedCountriesByCode[countryCode.toUpperCase()];
 }
 
-export const trialCommandBuild = (client: GraphQLClient) =>
-  new Command("trials")
-    .description("get the list of clinical trials")
-    .addOption(countryOption)
-    .action(async function (options: { country: string }) {
-      const sdk = getSdk(client);
-      const country = countries.find(
-        (country) => country.name === options.country
-      );
-      if (!country) {
-        throw new Error("Country not found, use one in the list");
-      }
+export const trialsCommand = new Command("trials")
+  .description("get the list of clinical trials")
+  .addOption(countryOption)
+  .action(async function (options: { country: string }) {
+    const { url } = trialsCommand.parent.opts();
+    const sdk = getSdkConfigured(url);
+    const country = countries.find(
+      (country) => country.name === options.country
+    );
+    if (!country) {
+      throw new Error("Country not found, use one in the list");
+    }
+    try {
       const trials = (await sdk.GetTrials({ countryCode: country.code })).data
         .trials;
       for (const trial of trials) {
         console.log(`${trial.name}, ${getCountryName(trial.country)}`);
       }
-    });
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        console.error(e.message);
+      }
+    }
+  });
