@@ -3,7 +3,7 @@ import { getActiveTrials } from "./trialService";
 
 describe("Trial Service tests", () => {
   it("Get trials filtered by country code", () => {
-    const trials = getActiveTrials({ countryCode: "fr" });
+    const trials = getActiveTrials({ countryCode: "fr", sponsor: undefined });
     expect(trials).toMatchInlineSnapshot(`
 [
   {
