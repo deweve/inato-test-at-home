@@ -3,7 +3,12 @@
     "composite": true,
     "esModuleInterop": true,
     "outDir": "dist",
-    "resolveJsonModule": true
+    "module": "CommonJS",
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2022",
+    "lib": ["es2022", "ESNext.AsyncIterable"]
   },
   "extends": "../../tsconfig.json",
   "include": ["./src/**/*.json", "./src/**/*.ts"]
