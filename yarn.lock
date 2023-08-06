@@ -1152,9 +1152,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript-graphql-request@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@graphql-codegen/typescript-graphql-request@npm:5.0.0"
+"@graphql-codegen/typescript-graphql-request@npm:4.5.9":
+  version: 4.5.9
+  resolution: "@graphql-codegen/typescript-graphql-request@npm:4.5.9"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^3.0.0
     "@graphql-codegen/visitor-plugin-common": 2.13.1
@@ -1162,9 +1162,9 @@ __metadata:
     tslib: ~2.4.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
-    graphql-request: ^6.0.0
+    graphql-request: ^3.4.0 || ^4.0.0 || ~5.0.0 || ~5.1.0
     graphql-tag: ^2.0.0
-  checksum: a30b08360ecf32036b1546d57cb786833cb6766c122cba5b1127c1d5c152796189ddaa06b40cb2e3321ab912eeacbfeec20582908d8b4160437f0fd63212caa6
+  checksum: fe924b3d17a1aee8bc5022e4b6cc0b8acba81c5e3ebf410892472898e2e44823ff339f58d3354902d7a5f77e28ef57968d55b1623ba4884a74eed54bb14b66c3
   languageName: node
   linkType: hard
 
@@ -3355,12 +3355,12 @@ __metadata:
   dependencies:
     "@graphql-codegen/cli": ^5.0.0
     "@graphql-codegen/typescript": ^4.0.1
-    "@graphql-codegen/typescript-graphql-request": ^5.0.0
+    "@graphql-codegen/typescript-graphql-request": 4.5.9
     "@graphql-codegen/typescript-operations": ^4.0.1
     "@types/node": ^20.4.5
     commander: ^11.0.0
     graphql: ^16.7.1
-    graphql-request: ^6.1.0
+    graphql-request: ~5.1.0
     graphql-tag: ^2.12.6
     ts-node: ^10.9.1
     typescript: ^5.1.6
@@ -3993,6 +3993,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"extract-files@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "extract-files@npm:9.0.0"
+  checksum: c31781d090f8d8f62cc541f1023b39ea863f24bd6fb3d4011922d71cbded70cef8191f2b70b43ec6cb5c5907cdad1dc5e9f29f78228936c10adc239091d8ab64
+  languageName: node
+  linkType: hard
+
 "fast-decode-uri-component@npm:^1.0.1":
   version: 1.0.1
   resolution: "fast-decode-uri-component@npm:1.0.1"
@@ -4365,7 +4372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-request@npm:^6.0.0, graphql-request@npm:^6.1.0":
+"graphql-request@npm:^6.0.0":
   version: 6.1.0
   resolution: "graphql-request@npm:6.1.0"
   dependencies:
@@ -4374,6 +4381,20 @@ __metadata:
   peerDependencies:
     graphql: 14 - 16
   checksum: 6d62630a0169574442320651c1f7626c0c602025c3c46b19e09417c9579bb209306ee63de9793a03be2e1701bb7f13971f8545d99bc6573e340f823af0ad35b2
+  languageName: node
+  linkType: hard
+
+"graphql-request@npm:~5.1.0":
+  version: 5.1.0
+  resolution: "graphql-request@npm:5.1.0"
+  dependencies:
+    "@graphql-typed-document-node/core": ^3.1.1
+    cross-fetch: ^3.1.5
+    extract-files: ^9.0.0
+    form-data: ^3.0.0
+  peerDependencies:
+    graphql: 14 - 16
+  checksum: 8b65d5c1b0cad8996a843b52305b2712ffbf842c700487d4cee1ed719f22baacaacfddafb65572bcddd67d57fd1d2d389dee2430ffba4b34c3ab542d079446c7
   languageName: node
   linkType: hard
 
