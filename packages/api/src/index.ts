@@ -1,4 +1,5 @@
 import express, { Express, Response } from "express";
+require("./TrialService/trialService");
 
 const app: Express = express();
 const port = 8080;
